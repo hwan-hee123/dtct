@@ -3,7 +3,7 @@
 // (421번은 1번과 거의 같은 각도의 닫힘용 프레임이라 한 바퀴 계산에서 제외 — 파일은 그대로 보존)
 // (이전 세트 renders/frames/frame_000~419.jpg 는 삭제하지 않고 보존)
 const FRAMES = 420, PATH = i => `renders/turntable/TURNTABLE.107.${i + 1}.webp`;
-const AUTO_FPS = 22;            // 자동회전 속도(프레임/초) — 한 바퀴 약 19초
+const AUTO_FPS = 15;            // 자동회전 속도(프레임/초) — 한 바퀴 약 28초 (오래된 기기 부담을 줄이려고 22 → 15)
 const RESUME_MS = 3000;         // 마지막 조작 후 자동회전 재개까지 대기
 const DRAG_FRAMES = 0.7;        // 뷰어 폭 전체 드래그 = 420 × 0.7 프레임
 // 렌더 안에서 제품이 차지하는 영역(전 프레임 합집합, 1516×888 기준) — 항상 같은 위치·크기로 그리기 위한 기준
@@ -132,7 +132,8 @@ function loop(t) {
   last = t;
   let np = pos + dt * AUTO_FPS;
   const cap = Math.round(pos) + 1.4999; if (np > cap) np = cap;       // 한 번에 최대 1프레임만 진행 → 프레임을 건너뛰지 않음 (느린 기기에서는 회전만 느려짐)
-  if (srcOf(idxOf(np)) || ready(idxOf(np))) { pos = np; draw(true); }   // 다음 프레임이 아직 로딩 전이면 현재 프레임에 머물렀다가 다음 루프에서 이어감(건너뛰지 않음)
+  if (idxOf(np) === idxOf(pos)) pos = np;                             // 같은 프레임이면 다시 그리지 않음 (모니터 주사율만큼 매번 그리던 부담 제거)
+  else if (srcOf(idxOf(np)) || ready(idxOf(np))) { pos = np; draw(true); }   // 다음 프레임이 아직 로딩 전이면 현재 프레임에 머물렀다가 다음 루프에서 이어감(건너뛰지 않음)
   rafId = requestAnimationFrame(loop);
 }
 function start() { if (!rafId && active && visible && !document.hidden && !reduce()) { last = performance.now(); rafId = requestAnimationFrame(loop); } }
