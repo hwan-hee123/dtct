@@ -118,7 +118,7 @@ body{font-synthesis:none}
 .pinfo dt{font-weight:500;opacity:.62}.pinfo dt::after{content:" —"}
 .pinfo dd{font-weight:500}
 /* 제품 위치: 뷰어 폭의 10% 만큼 왼쪽으로(크기·비율·턴테이블 로직 불변 — 캔버스가 뷰어 위치를 기준으로 그림) */
-@media(min-width:901px){.viewer{transform:translateX(-10%)}}
+@media(min-width:901px){.viewer{transform:translateX(-2%)}}   /* 제품 좌우 여백(왼쪽 텍스트 끝 ↔ 제품 ↔ 오른쪽 가이드)이 같도록 — margin-right:0 과 한 세트 */
 
 /* CMF · Detail 공통 디자인 시스템 */
 .sec-head{margin-bottom:clamp(32px,6vh,64px)}
@@ -199,6 +199,7 @@ body{font-synthesis:none}
 
 /* ===== v16 : 턴테이블 영역 반응형 여백 (app.js 는 뷰어 영역 기준으로 크기를 계산하므로 영역만 조절) ===== */
 .viewer,.hero-static{margin-top:clamp(40px,6vh,72px);margin-right:clamp(0px,1.6vw,40px)}
+.viewer{margin-right:0}
 @media(max-width:900px){
   .brand{padding-top:clamp(100px,13vh,120px)}
   .viewer,.hero-static{grid-column:1;grid-row:2;margin-top:clamp(8px,2vh,20px);margin-right:0;min-height:clamp(240px,40svh,520px)}
