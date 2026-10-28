@@ -1,0 +1,298 @@
+@font-face{font-family:"And Then It Ends";src:url("fonts/AndThenItEnds.woff2") format("woff2"),url("fonts/AndThenItEnds.woff") format("woff"),url("fonts/AndThenItEnds.ttf") format("truetype"),url("fonts/AndThenItEnds.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Gmarket Sans";src:url("fonts/GmarketSansLight.woff2") format("woff2"),url("fonts/GmarketSansLight.woff") format("woff"),url("fonts/GmarketSansTTFLight.ttf") format("truetype"),url("fonts/GmarketSansLight.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Gmarket Sans";src:url("fonts/GmarketSansMedium.woff2") format("woff2"),url("fonts/GmarketSansMedium.woff") format("woff"),url("fonts/GmarketSansTTFMedium.ttf") format("truetype"),url("fonts/GmarketSansMedium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Gmarket Sans";src:url("fonts/GmarketSansBold.woff2") format("woff2"),url("fonts/GmarketSansBold.woff") format("woff"),url("fonts/GmarketSansTTFBold.ttf") format("truetype"),url("fonts/GmarketSansBold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+:root{--charcoal:#17191C;--graphite:#303439;--warm:#F5F5F3;--orange:#F05A24;--titanium:#B8BDC2;--text:#E6E7E8;
+ --bg:var(--warm);--ink:#111;--point:var(--orange);--chip:#f7f3ec;
+ --font-logo:"And Then It Ends",sans-serif;
+ --font-text:"Gmarket Sans",sans-serif;--pad:clamp(20px,3.2vw,48px)}
+*{box-sizing:border-box;margin:0;border-radius:0!important}
+body{background:var(--bg);color:var(--ink);font:300 14px/1.6 var(--font-text);word-break:keep-all;overflow-x:hidden}
+b,strong{font-weight:700}
+a{color:inherit;text-decoration:none}
+.dtct{font-family:var(--font-logo);font-synthesis:none;font-weight:700;letter-spacing:0;line-height:.9}
+
+/* intro */
+.intro{position:fixed;inset:0;z-index:99;background:#fff;display:grid;place-items:center;animation:introOut .6s ease 2.6s forwards;pointer-events:none}
+.intro .dtct{font-size:clamp(60px,12vw,160px)}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
+
+
+/* concept */
+.concept{padding:clamp(80px,14vh,160px) var(--pad) clamp(60px,10vh,120px)}
+.label{font-size:12.65px;font-weight:500;color:var(--point);margin-bottom:20px;text-transform:uppercase;letter-spacing:.08em}
+.lead{max-width:34em;font-size:clamp(18px,2vw,26px);line-height:1.55;font-weight:500}
+.big{margin-top:clamp(40px,8vh,100px);font-size:20vw;white-space:nowrap;display:flex;min-height:.9em}
+.big span{display:inline-block;opacity:0;transform:translateY(40%);transition:opacity .6s,transform .7s cubic-bezier(.2,.8,.2,1)}
+.big.in span{opacity:1;transform:none}
+
+h2{font-weight:700;font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-.02em}
+
+/* from here on: dark */
+.cmf,.detail,.contact{color:var(--text)}
+.cmf{padding-top:clamp(40px,8vh,100px);padding-bottom:clamp(60px,10vh,120px)}
+
+.pk{font-size:10px;font-weight:700;color:var(--point);letter-spacing:.1em;text-transform:uppercase}
+
+.detail{padding-bottom:clamp(60px,10vh,120px)}
+.detail h2{margin-bottom:24px}
+.contact{padding-bottom:30px}
+.contact h2{margin-bottom:16px}
+.contact p{color:var(--titanium);font-size:13px}
+.bigc{font-size:26vw;margin:clamp(30px,6vh,70px) 0 -.05em;color:var(--text);white-space:nowrap}
+.info{display:grid;grid-template-columns:1fr 2fr 3fr .6fr 2fr;gap:16px;padding:14px 0;font-size:12.65px;line-height:1.55;border-bottom:1px solid #e2e2e2}
+.info dt{color:var(--point);font-weight:700;margin-bottom:2px}.info dd{font-weight:500}
+.cc{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px)}
+.cc p{font-size:15px;line-height:1.85}
+.contact a:hover{color:var(--point)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.big span{transition:none}}
+
+/* ===== v13 ===== */
+html{scroll-behavior:auto}
+body{overflow-x:clip}
+.cc h3{font-size:clamp(20.7px,1.84vw,25.3px);font-weight:700;margin-bottom:14px;border-top:2px solid var(--ink);padding-top:12px}
+.info{border-top:1px solid #dcdcdc;margin-bottom:clamp(48px,9vh,100px);padding-top:18px}
+
+/* 1. showroom — 레이어: ① 기본 배경(body) ② 확장 쿨그레이 배경(canvas) ③ 로고·타이포(.brand) ④ 뷰어(.viewer) ⑤ 하단 내비 */
+.showroom{--pad-x:clamp(24px,5vw,110px);position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;
+  display:grid;grid-template-columns:40fr 60fr;padding:0 var(--pad-x) 76px;background:var(--warm)}
+.showroom canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.36) 10%,rgba(255,255,255,.2) 22%,rgba(255,255,255,.08) 34%,rgba(255,255,255,.02) 44%,rgba(255,255,255,0) 52%),linear-gradient(180deg,rgba(245,245,243,0) 88%,#F5F5F3 100%)}
+.brand{position:relative;z-index:2;align-self:center;padding-right:3vw;min-width:0}
+.logo{display:inline-block;font-size:clamp(88px,9.4vw,180px);color:var(--charcoal);white-space:nowrap;margin-left:-.02em}
+.tag{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.55;font-weight:500;margin-top:clamp(18px,3.2vh,34px)}
+.sub{font-size:11px;color:#555;margin:10px 0 0 17px;letter-spacing:.02em}
+.desc{font-size:12px;line-height:1.8;color:#444;max-width:30em;margin:clamp(20px,4vh,40px) 0 0 17px}
+.viewer{position:relative;z-index:3;min-width:0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;outline:none}
+.viewer.dragging{cursor:grabbing}
+.viewer:focus-visible{outline:1px solid rgba(0,0,0,.35);outline-offset:-8px}
+
+/* Concept(Warm White) → CMF부터 Pure Black. 그라데이션 없음 */
+.fade{background:#000;color:#111}
+
+/* 하단 카테고리 내비 */
+.catnav{position:fixed;left:var(--pad-x,clamp(24px,5vw,110px));bottom:26px;z-index:50;display:flex;gap:clamp(18px,2.2vw,36px);
+  font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#111;transition:color .3s}
+.catnav a{position:relative;padding:4px 0;opacity:.55;transition:opacity .25s}
+.catnav a:hover,.catnav a.on{opacity:1}
+.catnav a.on::before{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--point)}
+.catnav.light{color:#f4f4f4}
+
+/* 카테고리 전환: 페이드 + 짧은 수평 이동 */
+#page.t-out{opacity:0;transform:translateX(-18px);transition:opacity .14s ease-in,transform .14s ease-in}
+#page.t-pre{opacity:0;transform:translateX(18px);transition:none}
+#page.t-in{opacity:1;transform:none;transition:opacity .24s ease-out,transform .24s ease-out}
+
+@media(max-width:900px){
+  .showroom{grid-template-columns:1fr;grid-template-rows:auto 1fr;padding-bottom:64px}
+  .brand{align-self:end;padding:clamp(28px,6vh,56px) 0 0}
+  .logo{font-size:clamp(64px,20vw,120px)}
+  .desc,.pinfo,.sub{display:none}
+  .tag{font-size:12px;margin-top:12px}
+  .info,.cc{grid-template-columns:1fr}  .catnav{bottom:18px;gap:16px}
+}
+@media(prefers-reduced-motion:reduce){.big span{transition:none}#page.t-out,#page.t-pre,#page.t-in{transition:none}.catnav,.catnav a{transition:none}}
+.cmf,.detail,.contact{padding-left:var(--pad);padding-right:var(--pad)}
+.showroom~*{}
+
+/* ===== 폰트 시스템 (고정 규칙) =====
+   로고(.dtct)      → And Then It Ends 단독 (Gmarket Sans로 폴백하지 않음)
+   그 외 모든 텍스트 → Gmarket Sans 단독 (Light 300 / Medium 500 / Bold 700 — 제공되는 3웨이트만 사용)  */
+*,*::before,*::after{font-family:var(--font-text)}
+.dtct,.dtct *{font-family:var(--font-logo)}
+button,input,textarea,select{font-family:var(--font-text);font-synthesis:none}
+body{font-synthesis:none}
+/* 하단 내비: 배경 밝기에 따라 자동 반전되어 어느 섹션 위에서도 겹쳐 읽힘 */
+.catnav{mix-blend-mode:difference;color:#fff}
+.catnav.light{color:#fff}
+.catnav a.on::before{background:#fff}
+
+/* ===== v14 : 메인 텍스트 · 제품 위치 · Concept 배경 · CMF/Detail 정적 그리드 ===== */
+/* 메인 — 위계: 로고 > 제목 > 부제 > 한글 설명 > 프로젝트 정보 */
+.tag{font-size:clamp(14px,.92vw,18px);line-height:1.5;color:var(--charcoal)}
+.sub{font-size:clamp(11.5px,.7vw,13px);color:var(--graphite);margin-top:12px}
+.desc{font-size:clamp(12.5px,.76vw,14.5px);line-height:1.95;color:var(--graphite);max-width:none;margin-top:clamp(24px,4.4vh,44px)}
+.pinfo{margin:clamp(22px,4vh,38px) 0 0 0;font-size:clamp(11.5px,.7vw,13px);line-height:1.6;color:var(--graphite)}
+.pinfo div{display:flex;gap:.45em}
+.pinfo dt{font-weight:500;opacity:.62}.pinfo dt::after{content:" —"}
+.pinfo dd{font-weight:500}
+/* 제품 위치: 뷰어 폭의 10% 만큼 왼쪽으로(크기·비율·턴테이블 로직 불변 — 캔버스가 뷰어 위치를 기준으로 그림) */
+@media(min-width:901px){.viewer{transform:translateX(-10%)}}
+
+/* CMF · Detail 공통 디자인 시스템 */
+.sec-head{margin-bottom:clamp(32px,6vh,64px)}
+.sec-head h2{color:var(--text)}
+.mno{font-size:12px;font-weight:500;color:var(--orange);letter-spacing:.04em;margin-bottom:6px}
+.mtxt h3{font-size:clamp(17px,1.35vw,22px);font-weight:700;line-height:1.25;color:var(--text);margin-bottom:10px}
+.mdesc{font-size:13px;line-height:1.85;color:var(--titanium);max-width:34em}
+
+/* ===== v15 ===== */
+/* 상단 마이크로 타이포그래피: 영문 대문자 · 넓은 자간 · 낮은 위계 */
+.micro{position:absolute;z-index:4;left:var(--pad-x);right:var(--pad-x);top:clamp(22px,3.2vh,34px);display:flex;justify-content:space-between;gap:16px;
+  font-size:10px;line-height:1;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--graphite);pointer-events:none}
+/* 정적 렌더 ↔ 360° : 같은 영역, 같은 기준(뷰어 중심·10% 왼쪽), opacity 만 전환 */
+.viewer,.hero-static{grid-column:2;grid-row:1}
+.hero-static{position:relative;z-index:2;min-width:0;display:grid;place-items:center;pointer-events:none;transition:opacity .22s ease}
+.hero-static img{display:block;width:112%;max-width:none;height:auto;border-radius:0!important}
+@media(min-width:901px){.hero-static{transform:translateX(-10%)}}
+.showroom:not(.is-360) .viewer{pointer-events:none}
+.showroom canvas,.showroom .veil{opacity:0;transition:opacity .22s ease}
+.showroom.is-360 canvas{opacity:1}
+.showroom.is-360 .hero-static{opacity:0}
+.modes{position:absolute;z-index:5;right:calc(var(--pad-x) - 8px);bottom:16px;display:flex}
+.mode{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;padding:0;color:var(--charcoal);opacity:.34;cursor:pointer;transition:opacity .2s}
+.mode:hover{opacity:.62}.mode.on{opacity:1}
+.mode:focus-visible{outline:1px solid var(--graphite);outline-offset:-4px}
+
+/* Concept — 제목·설명 → 가로 중앙의 세로형 이미지(핵심 비주얼) + 스크롤 순차 텍스트 */
+.concept{background:var(--warm);overflow-x:clip;padding-top:clamp(70px,12vh,140px)}
+.chead{max-width:1100px}
+.ctitle{font-size:clamp(40px,5.4vw,96px);font-weight:700;line-height:1;letter-spacing:-.01em;color:var(--charcoal);margin-bottom:clamp(20px,3.4vh,36px)}
+.info{grid-template-columns:1fr 2fr 1fr .6fr 2.4fr;gap:16px;padding:14px 0;border-top:1px solid rgba(23,25,28,.16);border-bottom:1px solid rgba(23,25,28,.16);margin-bottom:clamp(56px,10vh,120px);font-size:clamp(12.65px,.8vw,14.5px)}
+.info div{display:block;padding:0;border:0}
+.info dt{color:var(--graphite);opacity:.6;margin:0 0 2px;font-weight:500}.info dd{font-weight:500;color:var(--charcoal)}
+.cstage{--cimg:clamp(416px,65vw,1248px);display:grid;grid-template-columns:var(--cimg) minmax(260px,500px);column-gap:clamp(28px,4vw,72px);justify-content:center;align-items:start}
+.cfig{width:100%;max-width:100%;margin:0;line-height:0;cursor:grab;outline:none;transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);-webkit-user-select:none;user-select:none}
+.cfig:active{cursor:grabbing}
+.cfig:focus-visible{outline:1px solid rgba(23,25,28,.4);outline-offset:6px}
+.cfig img{display:block;width:100%;height:auto;-webkit-user-drag:none;pointer-events:none}
+.js .cfig{opacity:0;transform:translateY(28px)}
+.js .cstage.seen .cfig{opacity:1;transform:none}
+/* 설명 컬럼: 처음에는 숨김(자리만 확보 → 이미지 위치·크기 불변), 첫 드래그 후 부드럽게 표시되고 유지 */
+.ccol{position:relative;display:grid;align-content:start;gap:clamp(18px,3vh,28px);will-change:transform;max-height:calc(100svh - max(16svh,80px) - 28px);overflow-y:auto;scrollbar-width:none}
+.ccol::-webkit-scrollbar{display:none}
+.cnote{font-size:clamp(13.5px,.85vw,16px);line-height:1.8;color:var(--graphite);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.cnote b{display:block;margin-bottom:10px;font-size:12.65px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--charcoal);padding-top:12px;border-top:1px solid rgba(23,25,28,.35)}
+.js .cnote:not(.in){display:none}
+.js .cnote{opacity:0;transform:translateY(14px)}
+.js .cnote.on{opacity:1;transform:none}
+@media(max-width:1000px){
+  .cstage{--cimg:min(88vw,620px);grid-template-columns:var(--cimg);row-gap:clamp(28px,5vh,44px)}
+  /* 좁은 화면: 설명은 화면 하단에 붙는 패널로(이미지 아래 끝에 갇히지 않음), 표시된 설명만 */
+  .js .ccol{position:absolute;left:12px;right:12px;top:0;z-index:3;display:none;gap:16px;max-height:46svh;overflow:auto;padding:14px 16px;background:rgba(245,245,243,.95);border-top:1px solid rgba(23,25,28,.25)}
+  .js .ccol.has{display:grid}
+  .cstage{position:relative}
+}
+@media(max-width:900px){.info{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.cfig{transform:none;transition:opacity .4s}.cnote{transform:none;transition:opacity .4s}}
+
+/* CMF · Detail : 순수 검정 연속, 얇은 구분선과 작은 라벨 */
+.cmf{padding-top:clamp(80px,14vh,160px)}
+.detail{border-top:1px solid var(--graphite);padding-top:clamp(56px,10vh,110px)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.sec-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--titanium);opacity:.8}
+
+  margin-right:calc(var(--pad)*-1);padding-right:var(--pad);scroll-padding-left:0;outline:none}
+
+/* 반응형 */
+@media(max-width:900px){
+  .cwrap{grid-template-columns:minmax(0,1fr);row-gap:clamp(28px,5vh,48px)}
+  .cwrap{--cw:min(72vw,420px)}
+  .cfig{margin-left:calc(-1*var(--pad)*0);width:var(--cw)}
+  .viewer,.hero-static{grid-column:1;grid-row:2}
+  .hero-static img{width:100%}
+  .info div{grid-template-columns:6.5em 1fr}
+}
+@media(prefers-reduced-motion:reduce){.hero-static,.showroom canvas,.showroom .veil,.mode{transition:none}}
+
+/* ===== v16 : 턴테이블 영역 반응형 여백 (app.js 는 뷰어 영역 기준으로 크기를 계산하므로 영역만 조절) ===== */
+.viewer,.hero-static{margin-top:clamp(40px,6vh,72px);margin-right:clamp(0px,1.6vw,40px)}
+@media(max-width:900px){
+  .brand{padding-top:clamp(100px,13vh,120px)}
+  .viewer,.hero-static{grid-column:1;grid-row:2;margin-top:clamp(8px,2vh,20px);margin-right:0;min-height:clamp(240px,40svh,520px)}
+  .hero-static img{width:100%}
+}
+
+/* ===== v17 ===== */
+/* 상단 마이크로카피: INDUSTRIAL DESIGN ● MOBILITY & INTERACTION ● PORTFOLIO 2026 */
+.micro{align-items:flex-start}
+.micro-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right;font-variant-numeric:tabular-nums}
+@media(max-width:640px){.micro{letter-spacing:.1em;font-size:9px;gap:12px}.micro>span:first-child{max-width:42%}}
+
+/* ===== v18 ===== */
+/* 제품 사양 */
+.spec{margin-top:clamp(18px,3vh,30px);font-size:clamp(11.5px,.7vw,13px);line-height:1.5;color:var(--graphite)}
+.spec-h{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+.spec dl{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.spec dt{font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:2px}
+.spec dd{font-weight:500;color:var(--charcoal)}
+@media(max-width:900px){.spec{display:none}}
+
+/* 컨셉 → CMF: 배경만 자연스러운 그라데이션 (Warm White → Pure Black) */
+.fade::before{content:"";display:block;height:clamp(160px,30vh,340px);background:linear-gradient(180deg,var(--warm) 0,#000 100%)}
+.cmf{padding-top:clamp(20px,4vh,48px)}
+
+/* 360° 모드(데스크톱): 사양이 추가돼 브랜드 영역이 길어져도 상단 정보 바와 겹치지 않도록 */
+@media(min-width:901px){
+  .showroom.is-360 .spec dl{gap:8px 16px}
+  .showroom.is-360 .spec{margin-top:clamp(14px,2.2vh,24px)}
+}
+@media(min-width:901px) and (max-height:820px){
+  .showroom.is-360 .spec{display:none}
+}
+
+/* ===== v19 ===== */
+/* 가로선: 우측 텍스트 높이와 무관하게 고정된 위치(화면 하단, 내비 바로 위). 전환 버튼은 기존 가로선 자리(상단 우측)로 이동 */
+.showroom::after{content:"";position:absolute;z-index:4;left:var(--pad-x);right:var(--pad-x);bottom:64px;height:1px;background:rgba(48,52,57,.2);pointer-events:none}
+.modes{bottom:auto;top:clamp(70px,9.5vh,92px)}
+@media(max-width:900px){.showroom::after{bottom:56px}}
+
+/* ===== v20 ===== */
+#logo{font-size:var(--logo-fs,clamp(88px,9.4vw,180px))}
+/* 공통 텍스트 기준선: 로고·제목·프로젝트 정보·사양의 왼쪽 시작선을 맞춤 */
+.mno{font-size:12px;font-weight:500;color:var(--orange);letter-spacing:.04em}
+.mdesc{font-size:13px;line-height:1.85;color:var(--titanium);max-width:34em}
+.sec-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--titanium);opacity:.8}
+@media(max-width:640px){.sec-label{display:none}}
+
+/* 상단 정보 바: FPS · FRAME 은 Turntable 모드에서만 */
+.showroom:not(.is-360) .micro-t{display:none}
+
+/* 컬러칩 — 색상만(텍스트 없음). Turntable 모드에서만, 설명(사양) 바로 아래 */
+.swatches{display:none}
+.showroom.is-360 .swatches{display:flex;gap:10px;margin-top:clamp(12px,1.8vh,18px)}
+.swatches i{width:14px;height:14px;border-radius:50%!important;background:var(--c);box-shadow:inset 0 0 0 1px rgba(23,25,28,.16)}
+@media(max-width:900px){.swatches{display:none!important}}
+
+/* Photo 모드 (데스크톱): 상단 좌 = dtct. + 영문 타이틀 2줄 / 상단 우 = 프로젝트 정보·사양 / 하단 = 제품 이미지(하단 가로선의 좌우 끝에 맞춤, 2000×834 비율 유지)
+   이미지에 그라데이션·마스크 없음. 화면이 낮으면 섹션이 늘어나 이미지가 잘리거나 겹치지 않도록 한다. */
+@media(min-width:901px){
+  .showroom:not(.is-360){height:auto;min-height:max(100svh,560px);grid-template-rows:auto 1fr}
+  .showroom:not(.is-360) .brand{grid-column:1/-1;grid-row:1;align-self:start;padding:clamp(64px,6.4vh,84px) 0 0;display:grid;grid-template-columns:minmax(0,40%) minmax(0,.7fr) minmax(0,1fr);column-gap:clamp(24px,3vw,56px);align-items:start}
+  .showroom:not(.is-360) #logo{font-size:min(var(--logo-fs,120px),12.5vh);grid-column:1;grid-row:1;justify-self:start;line-height:.9}
+  .showroom:not(.is-360) .brand>.tag{grid-column:1;grid-row:2;margin-top:clamp(8px,1.4vh,14px)}
+  .showroom:not(.is-360) .brand>.pinfo{grid-column:2;grid-row:1/3;margin:calc(min(var(--logo-fs,120px),12.5vh)*.09) 0 0}
+  .showroom:not(.is-360) .brand>.spec{grid-column:3;grid-row:1/3;margin:calc(min(var(--logo-fs,120px),12.5vh)*.09) 0 0}
+  .showroom:not(.is-360) .spec dl{grid-template-columns:1fr 1fr;gap:8px 20px}
+  .showroom:not(.is-360) .hero-static{grid-column:1/-1;grid-row:2;align-self:end;justify-self:stretch;transform:none;margin:clamp(12px,2vh,22px) 0 0;display:block;width:100%}
+  .showroom:not(.is-360) .hero-static img{width:100%;border-radius:0!important}
+}
+/* 좁은 화면: 이미지 전체 폭, 마스크 없음 */
+@media(max-width:900px){.hero-static img{-webkit-mask-image:none;mask-image:none;border-radius:0!important}}
+
+/* CMF · Detail: 3열 격자 (태블릿 2열 · 모바일 1열) */
+.mframe{overflow:hidden;background:var(--graphite);border-radius:2px!important;aspect-ratio:1/1;line-height:0}
+.mframe img{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
+.mtxt{margin-top:clamp(14px,2vh,22px)}
+.mtxt h3,.dtxt h3{font-size:clamp(17px,1.35vw,22px);font-weight:700;line-height:1.25;color:var(--text);margin:6px 0 10px}
+.cmf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(40px,6vh,72px) clamp(18px,2.2vw,36px)}
+.mitem{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+@media(hover:hover) and (pointer:fine){.mitem:hover{transform:translateY(-4px)}}
+.dlist{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(56px,9vh,110px)}
+.dgroup .dtxt{margin:0 0 clamp(16px,2.6vh,28px);max-width:44em}
+.dgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,32px)}
+.dgrid .mframe{aspect-ratio:16/10}
+@media(max-width:1024px){.cmf-grid,.dgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.cmf-grid,.dgrid{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.mitem{transition:none}}
+
+/* 큰 모니터(QHD 이상·4K): 고정 상한 때문에 작아 보이는 텍스트만 단계적으로 키움 (레이아웃 구조는 동일) */
+@media(min-width:2400px){
+  .micro{font-size:13px}.catnav a{font-size:14px}.tag{font-size:22px}.pinfo{font-size:16px}.spec{font-size:16px}.spec-h,.spec dt{font-size:12px}
+  .cnote{font-size:19px}.cnote b{font-size:15px}.info{font-size:17px}.mdesc{font-size:16px}.mno,.sec-label{font-size:14px}.mtxt h3,.dtxt h3{font-size:26px}
+}
+@media(min-width:3400px){
+  .micro{font-size:17px}.catnav a{font-size:18px}.tag{font-size:30px}.pinfo{font-size:21px}.spec{font-size:21px}.spec-h,.spec dt{font-size:15px}
+  .cnote{font-size:25px}.cnote b{font-size:19px}.info{font-size:22px}.mdesc{font-size:21px}.mno,.sec-label{font-size:18px}.mtxt h3,.dtxt h3{font-size:34px}
+}

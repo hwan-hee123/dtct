@@ -1,0 +1,4 @@
+.DS_Store
+Thumbs.db
+# 라이선스(재배포 허용 여부) 확인 전까지 공개 저장소에서 제외
+and_then_it_ends/

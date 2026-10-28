@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dtct. — Mono-Mobility Cockpit &amp; Interface Design</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="intro" aria-hidden="true"><span class="dtct">dtct.</span></div>
+
+<!-- 1. SHOWROOM : 메인 화면 = 왼쪽 로고 + 오른쪽 360° 턴테이블 (배경은 왼쪽까지 확장) -->
+<main id="page">
+<section class="showroom" id="top">
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="micro" aria-hidden="true"><span>KMU Graduation Exhibition</span><span class="micro-r"><span>CAM: 35MM / PERSPECTIVE</span><span>SCALE: 1:1 REAL-TIME RENDER</span><span class="micro-t" id="frame">FRAME: 001 / 420</span><span class="micro-t" id="fps">FPS: -- / CANVAS 2D</span></span></div>
+  <div class="brand">
+    <h1 class="dtct logo" id="logo">dtct.</h1>
+    <p class="tag">Redefining the Tactile Interface<br>for Single-Seater Mobility</p>
+    
+    <dl class="pinfo">
+      <div><dt>Project</dt><dd>dtct.</dd></div>
+      <div><dt>Designer</dt><dd>Jeon Yoell</dd></div>
+      <div><dt>Tools</dt><dd>Rhino 3D, KeyShot, Adobe CS</dd></div>
+    </dl>
+    <div class="spec">
+      <p class="spec-h">Product Specifications</p>
+      <dl>
+        <div><dt>Dimensions</dt><dd>W 1,200 × L 2,400 × H 1,000 mm</dd></div>
+        <div><dt>Product Type</dt><dd>Single-Seater Mobility Cockpit</dd></div>
+        <div><dt>Materials</dt><dd>Titanium · Alcantara · CFRP</dd></div>
+        <div><dt>Colors</dt><dd>Black · Silver · Gunmetal · Orange · Amber</dd></div>
+      </dl>
+    </div>
+    <div class="swatches" role="img" aria-label="Project colors"><i style="--c:#17191C"></i><i style="--c:#B8BDC2"></i><i style="--c:#303439"></i><i style="--c:#F05A24"></i><i style="--c:#F5A307"></i></div>
+  </div>
+  <div class="hero-static" id="heroStatic"><img src="renders/hero-render.png" alt="dtct. 스티어링 휠과 조작계 디테일 렌더" decoding="async"></div>
+  <div class="viewer" id="viewer" tabindex="0" role="img" aria-label="dtct. 360도 렌더링 뷰어 — 좌우로 드래그하여 회전"></div>
+  <div class="modes" role="group" aria-label="제품 보기 방식">
+    <button type="button" class="mode on" data-mode="render" aria-label="정적 렌더 보기" aria-pressed="true"><svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="6.5" width="19" height="15" rx="1.5"/><circle cx="10.2" cy="11.8" r="1.5"/><path d="M5 19.5l5.6-5.2 4.2 3.9 3.3-3 5.4 5"/></svg></button>
+    <button type="button" class="mode" data-mode="360" aria-label="360° 인터랙티브 뷰" aria-pressed="false"><svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.5 14a8.5 8.5 0 1 1-2.6-6.1"/><path d="M22.2 4.6v4.2h-4.2"/><ellipse cx="14" cy="14" rx="3.2" ry="1.3"/></svg></button>
+  </div>
+</section>
+
+<!-- 2. CONCEPT -->
+<section class="concept" id="concept">
+  <header class="chead">
+    <h2 class="ctitle">Concept</h2>
+    <dl class="info">
+      <div><dt>Project</dt><dd>dtct.</dd></div>
+      <div><dt>Category</dt><dd>Mono-Mobility Cockpit &amp; Interface Design</dd></div>
+      <div><dt>Role</dt><dd>Lead Designer</dd></div>
+      <div><dt>Year</dt><dd>2026</dd></div>
+      <div><dt>Tools</dt><dd>Rhino 3D, KeyShot, Adobe Illustrator, Adobe Photoshop</dd></div>
+    </dl>
+  </header>
+  <div class="cstage" id="cstage">
+    <figure class="cfig" id="cfig" tabindex="0" aria-label="제품 상면 렌더 — 드래그하면 설명이 나타납니다"><img src="public/Vertical%20main%20image.png" alt="dtct. 1인승 모빌리티 조종석 상면 렌더" loading="lazy" decoding="async" draggable="false"></figure>
+    <div class="ccol" id="ccol" aria-live="polite">
+      <p class="cnote"><b>Problem</b>최근 모빌리티 실내 공간은 모든 물리 버튼을 거대한 평면 터치 화면 하나로 통합하는 흐름으로 가고 있습니다.</p>
+      <p class="cnote">주행 중 흔들리는 환경에서 화면을 직접 보며 터치해야 하는 방식은 운전자의 시선을 빼앗아 주행 몰입감을 깨뜨리고 직관적인 조작을 방해하는 치명적인 한계를 가집니다.</p>
+      <p class="cnote"><b>Solution</b>dtct.는 시각에만 의존하는 평면 인터페이스의 한계를 부수고, 손끝의 감각만으로 모든 기능을 즉각 제어할 수 있는 매크로 커맨드 패들과 물리적 조작계를 제안합니다.</p>
+      <p class="cnote">시선 분산 없이 오직 주행에만 온전히 몰입할 수 있도록 운전자 한 명의 신체와 조작 반경에 완벽히 맞춘 1인승 모빌리티 조종석을 설계했습니다.</p>
+      <p class="cnote"><b>Design Language</b>운전자와 기계가 교감하는 물리적 타격감과 정밀한 기계적 감성을 조형 언어로 풀어냈습니다.</p>
+      <p class="cnote">차갑고 묵직한 티타늄 및 카본 프레임의 무채색 기조 속에, 손과 몸이 직접 닿는 핵심 영역에만 강렬한 플레임 오렌지 알칸타라와 조명을 배치하여 금속의 차가움 속에서 압도적인 시각적 긴장감과 조형미를 완성했습니다.</p>
+    </div>
+  </div>
+  <div class="big dtct" id="bigWord" aria-label="dtct."></div>
+</section>
+
+<!-- CMF부터 Pure Black (그라데이션 없음) -->
+<div class="fade">
+  <!-- 4. CMF -->
+  <section class="cmf" id="cmf">
+    <div class="sec-head"><h2>CMF</h2><p class="sec-label">Color · Material · Finish</p></div>
+    <div class="mgrid cmf-grid" id="cmfGrid"></div>
+  </section>
+
+  <!-- 5. DETAIL -->
+  <section class="detail" id="detail">
+    <div class="sec-head"><h2>Detail</h2><p class="sec-label">Front Frame · Steering Wheel · Seat · LED</p></div>
+    <div class="dlist" id="detailList"></div>
+  </section>
+
+  <!-- 6. CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p><b>Industrial Designer</b><br>Jeon Yoell<br>+82 10 9306 8152<br><a href="mailto:yoelljeonid@gmail.com">yoelljeonid@gmail.com</a></p>
+    <div class="bigc dtct">dtct.</div>
+  </section>
+</div>
+</main>
+<nav class="catnav" id="catnav" aria-label="카테고리">
+  <a href="#top" data-t="top">360</a><a href="#concept" data-t="concept">Concept</a><a href="#cmf" data-t="cmf">CMF</a><a href="#detail" data-t="detail">Detail</a><a href="#contact" data-t="contact">Contact</a>
+</nav>
+<script src="app.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
