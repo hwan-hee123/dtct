@@ -111,10 +111,9 @@ addEventListener("resize",navUpdate);navUpdate();
   }
   const byDrag=()=>drag>FIRST?1+Math.floor((drag-FIRST)/STEP):0;
   function place(){
-    if(!shown){col.style.transform="";return;}
-    const s=stage.getBoundingClientRect(),h=col.offsetHeight,room=Math.max(0,s.height-h);let y;
-    if(matchMedia("(max-width:1000px)").matches)y=innerHeight-14-h-s.top;     // 좁은 화면: 화면 하단 패널
-    else y=Math.max(innerHeight*.16,80)-s.top;                                // 넓은 화면: 이미지 옆, 화면 상단 근처
+    if(!shown||!matchMedia("(max-width:1000px)").matches){col.style.transform="";return;}   // 넓은 화면은 CSS sticky 가 담당
+    const s=stage.getBoundingClientRect(),h=col.offsetHeight,room=Math.max(0,s.height-h);
+    const y=innerHeight-14-h-s.top;                                           // 좁은 화면: 화면 하단 패널
     col.style.transform="translateY("+Math.round(Math.max(0,Math.min(room,y)))+"px)";
   }
   function follow(){requestAnimationFrame(()=>{const n=notes[shown-1];if(!n)return;const need=n.offsetTop+n.offsetHeight-col.clientHeight;if(need>col.scrollTop)col.scrollTo({top:need,behavior:"smooth"});});}
